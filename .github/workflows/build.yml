@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: windows-latest
 
+    env:
+      apk_name: Muncheese  # Set the static APK name here
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -45,13 +48,26 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_ACCESS_TOKEN }}
 
-      - name: Upload APK
+      - name: Rename and Upload APK
+        run: |
+          # Define the desired APK name based on the 'apk_name' variable
+          APK_NAME="$apk_name.apk"
+          
+          # Rename the APK file to the desired name
+          mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/$APK_NAME
+          
+          # Upload the renamed APK as a release asset
+          echo "Uploading APK: $APK_NAME"
+          echo "::set-output name=apk_name::$APK_NAME"  # Store the APK name for later use
+        shell: bash
+
+      - name: Upload APK as Release Asset
         id: upload_apk
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/apk/debug/app-debug.apk
-          asset_name: app-debug.apk
+          asset_path: app/build/outputs/apk/debug/$APK_NAME
+          asset_name: ${{ steps.upload_apk.outputs.apk_name }}
           asset_content_type: application/vnd.android.package-archive
         env:
           GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_ACCESS_TOKEN }}
