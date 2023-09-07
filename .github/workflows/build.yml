@@ -1,143 +1,78 @@
-name: Build and Deploy APK
+name: BuildAndDeployAPK
+
 on:
   push:
     paths:
       - .github/workflows/build.yml
 
 jobs:
-
   build:
-
     runs-on: windows-latest
 
-
-
     steps:
-
       - name: Checkout code
-
         uses: actions/checkout@v3
 
-
-
       - name: Set up JDK
-
+        id: setup-java
         uses: actions/setup-java@v2
-
         with:
-
           java-version: 11
-
           distribution: 'adopt'
 
-
+      - name: Set JAVA_HOME
+        run: echo "JAVA_HOME=${{ steps.setup-java.outputs.java-home }}" >> $GITHUB_ENV
 
       - name: Change wrapper permissions
-
         run: chmod +x ./gradlew
 
-
-
       - name: Build APK
-
         run: .\gradlew assembleDebug
 
-
-
       - name: Set up Git
-
         run: |
-
           git config --global user.name "T-InstaApp"
-
           git config --global user.email "hello@instaapp.online"
 
-
-
       - name: Create Release
-
         id: create_release
-
         uses: actions/create-release@v1
-
         with:
-
-          tag_name: v1.0.1  # Replace with your desired tag name
-          release_name: Release v1.0.1  # Replace with your desired release name
+          tag_name: v1.0.2
+          release_name: Release v1.0.2
           draft: false
-
           prerelease: false
-
         env:
-
           GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_ACCESS_TOKEN }}
-
-
 
       - name: Upload APK
-
         id: upload_apk
-
         uses: actions/upload-release-asset@v1
-
         with:
-
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-
           asset_path: app/build/outputs/apk/debug/app-debug.apk
-
           asset_name: app-debug.apk
-
           asset_content_type: application/vnd.android.package-archive
-
         env:
-
           GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_ACCESS_TOKEN }}
 
-
-
       - name: Send Email Notification
-
         uses: dawidd6/action-send-mail@v3
-
         with:
-
           server_address: smtp.gmail.com
-
           server_port: 465
-
           username: niraj07.k@gmail.com
-
           password: ${{ secrets.GMAIL_TOKEN }}
-
           from: niraj07.k@gmail.com
-
           subject: APK Build Notification
-
           body: |
-
             Here is the link to download the APK:
-
             ${{ steps.upload_apk.outputs.browser_download_url }}
-
           to: niraj.kumar@tissatech.com
 
-
-
       - name: Call API
-
         run: |
-
           $env:BASE_URL = "http://premisafe.com/production/download_api.php"
-
-          # Combine the URL with query parameters
-
           $API_URL = "$env:BASE_URL/data?url=${{ steps.upload_apk.outputs.browser_download_url }}"
-
-          # Make the API request using curl
-
           $response = Invoke-RestMethod -Uri $API_URL
-
-          # Print the response for debugging purposes
-
           Write-Host "API Response: $response"
