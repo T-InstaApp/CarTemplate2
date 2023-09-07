@@ -48,9 +48,9 @@ jobs:
 
         run: |
 
-          git config --global user.name "Niraj0107"
+          git config --global user.name "T-InstaApp"
 
-          git config --global user.email "niraj.kumar@tissatech.com"
+          git config --global user.email "hello@instaapp.online"
 
 
 
