@@ -21,5 +21,3 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle and Enable Warning Mode
         run: ./gradlew build --warning-mode all  # Add this line
-
-
