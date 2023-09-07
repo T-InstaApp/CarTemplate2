@@ -41,12 +41,12 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.5
-          release_name: Release v1.0.5
+          tag_name: v1.0.6
+          release_name: Release v1.0.6
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Rename and Upload APK
         run: |
@@ -70,7 +70,7 @@ jobs:
           asset_name: ${{ steps.upload_apk.outputs.apk_name }}
           asset_content_type: application/vnd.android.package-archive
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Send Email Notification
         uses: dawidd6/action-send-mail@v3
