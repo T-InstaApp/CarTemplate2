@@ -204,6 +204,13 @@ class LoginActivity : AppCompatActivity(), KodeinAware, NetworkCallListener {
         }
     }
 
+
+
+
+
+
+
+
     private fun RestroAccess() {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // before
