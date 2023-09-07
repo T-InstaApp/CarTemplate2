@@ -7,34 +7,26 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Use ubuntu-latest for better compatibility with Gradle
+    runs-on: ubuntu-latest
 
     env:
-      apk_name: Muncheese  # Set the static APK name here
-      updated_app_name: NK  # Set the updated app name here
+      apk_name: Muncheese
+      updated_app_name: NK
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  # Use actions/checkout@v2 for better flexibility
+        uses: actions/checkout@v2
 
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
           java-version: 11
-          distribution: 'adopt'
-
-      - name: Set JAVA_HOME
-        run: echo "JAVA_HOME=${{ runner.tool_cache }}/Java_Adopt_jdk_11.0.20-101/x64" >> $GITHUB_ENV
-
-      - name: Print JAVA_HOME
-        run: echo "JAVA_HOME is $JAVA_HOME"  # Verify that JAVA_HOME is correctly set
 
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
 
       - name: Update AndroidManifest.xml
         run: |
-          # Replace the app name in AndroidManifest.xml with the updated app name
           sed -i "s/android:label=\"[^\"]*\"/android:label=\"${{ env.updated_app_name }}\"/" app/src/main/AndroidManifest.xml
 
       - name: Build APK
@@ -58,16 +50,11 @@ jobs:
 
       - name: Rename and Upload APK
         run: |
-          # Define the desired APK name based on the 'apk_name'
           APK_NAME="${{ env.updated_app_name }}-$apk_name.apk"
-          
-          # Rename the APK file to the desired name
           mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/$APK_NAME
-          
-          # Upload the renamed APK as a release asset
           echo "Uploading APK: $APK_NAME"
-          echo "::set-output name=apk_name::$APK_NAME"  # Store the APK name for later use
-          echo "APK_NAME=$APK_NAME" >> $GITHUB_ENV  # Set the APK name in the environment
+          echo "::set-output name=apk_name::$APK_NAME"
+          echo "APK_NAME=$APK_NAME" >> $GITHUB_ENV
         shell: bash
 
       - name: Upload APK as Release Asset
@@ -76,7 +63,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: app/build/outputs/apk/debug/${{ env.APK_NAME }}
-          asset_name: ${{ env.APK_NAME }}  # Use the APK name from the environment
+          asset_name: ${{ env.APK_NAME }}
           asset_content_type: application/vnd.android.package-archive
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
