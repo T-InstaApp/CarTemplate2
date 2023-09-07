@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="categoryData"
+            type="com.example.cartemplate2.datamodel.CategoryResponse" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/cardLayout"
+        android:layout_width="@dimen/_64sdp"
+        android:layout_height="@dimen/_64sdp"
+        android:layout_marginHorizontal="3dp"
+        android:layout_marginVertical="@dimen/_3sdp"
+        android:background="@drawable/bg_circle"
+        android:elevation="@dimen/_5sdp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/_3sdp">
+
+        <ImageView
+            android:id="@+id/imgCat"
+            android:layout_width="@dimen/_58sdp"
+            android:layout_height="@dimen/_58sdp"
+            android:contentDescription="@string/content_description"
+            android:scaleType="fitXY"
+            app:image="@{categoryData.category_url}" />
+        <!-- app:image="@{categoryData.category_url}"-->
+        <TextView
+            android:id="@+id/txtCatName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:fontFamily="serif"
+            android:paddingStart="5dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="3dp"
+            android:text="@{categoryData.category}"
+            android:textAlignment="center"
+            android:textColor="@color/color_dark"
+            android:textSize="@dimen/normal_text"
+            android:textStyle="bold"
+            android:visibility="visible" />
+        <!-- android:visibility="@{categoryData.category.length() > 1 ? View.VISIBLE:View.INVISIBLE}"-->
+        <RelativeLayout
+            android:id="@+id/layoutOutOfStock"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grey_light"
+            android:clickable="false"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:clickable="false"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Out of stock"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/normal_text"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</layout>

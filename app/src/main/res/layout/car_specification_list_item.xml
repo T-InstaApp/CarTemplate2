@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:id="@+id/cardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/_2sdp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:layout_weight="1"
+            android:elevation="@dimen/_5sdp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_2sdp">
+
+                <ImageView
+                    android:id="@+id/specificationIcon"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="@dimen/_3sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:src="@drawable/ic_abs_light" />
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="1.5dp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/specificationIcon"
+                    android:background="@color/teal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/view1"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/_3sdp">
+
+                    <TextView
+                        android:id="@+id/specificationLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_regular"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/small_text" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_8sdp">
+
+                        <TextView
+                            android:id="@+id/specificationValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/imgView"
+                            android:fontFamily="@font/nunito_regular"
+                            android:maxLines="1"
+                            android:text=""
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/normal_text" />
+
+                        <ImageView
+                            android:id="@+id/imgView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginHorizontal="3dp"
+                            android:src="@drawable/ic_view_3"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" /><!--For Visibility-->
+        <variable
+            name="menuData"
+            type="com.example.cartemplate2.datamodel.TestDriveBooking" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/cardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:paddingVertical="@dimen/_6sdp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/_6sdp"
+                app:cardCornerRadius="@dimen/_6sdp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="@dimen/_90sdp"
+                        android:contentDescription="@string/content_description"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/car_hd2"
+                        app:imageSquare="@{menuData.product_url}" />
+
+                    <TextView
+                        android:id="@+id/txtOff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:background="@drawable/gradient_background"
+                        android:fontFamily="@font/nunito_regular"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="@dimen/_5sdp"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_9sdp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_2sdp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_bold"
+                            android:maxLines="2"
+                            android:text="@{menuData.product_name}"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/heading" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtDiscountPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/nunito_extrabold"
+                            android:text="1254887"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/normal_text" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_3sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:background="@drawable/strike_background"
+                            android:fontFamily="@font/nunito_regular"
+                            android:text="124548"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/small_text"
+                            app:FormatCurrency="@{menuData.price}" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtSpecification"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:fontFamily="@font/nunito_regular"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="25,123 KM • CNG • Manual"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/small_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:drawableLeft="@drawable/ic_schedule"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/nunito_extrabold"
+                        android:gravity="center_vertical"
+                        android:text="@{menuData.requested_at}"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/small_text" />
+
+                    <LinearLayout
+                        android:id="@+id/layout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/nunito_regular"
+                            android:maxLines="1"
+                            android:text="Cancle Ride"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/normal_text" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switchcompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="12dp" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_5sdp"
+            android:fontFamily="@font/nunito_regular"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:paddingVertical="@dimen/_2sdp"
+            android:text=""
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/small_text"
+            app:drawableLeftCompat="@drawable/ic_location" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_6sdp"
+            android:background="@color/grey_light" />
+    </LinearLayout>
+
+</layout>

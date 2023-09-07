@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">CarTemplate2</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="test_drive_booking">Test Drive Booking</string>
+    <string name="test_drive">Test Drive</string>
+    <string name="booking">Booking</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="more">More</string>
+    <string name="about_us">About Us</string>
+    <string name="contact_us">Contact Us</string>
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="content_description">content_description</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="where_would_you_like_to_test_drive_this_car">Where would you like to test drive this car?</string>
+
+
+    <string name="h_no_internet">No Internet</string>
+    <string name="no_internet">No internet connection available, Please make sure your device is connected to the internet</string>
+    <string name="h_login_401">Unauthorized Access</string>
+    <string name="login_401">Unable to log in with provided credentials,Please check and retry</string>
+    <string name="no_restro_access">You do not have access to restaurant.</string>
+    <string name="h_login_403">Access Denied</string>
+    <string name="alert">Alert</string>
+    <string name="ok">Ok</string>
+    <string name="confirm_user">You do not have access to this restaurant. If you want to login for this restaurant please click on OK.</string>
+    <string name="enter_your_email">Enter your email id</string>
+    <string name="enter_your_user_name">Enter your username</string>
+    <string name="email">Email</string>
+    <string name="user_name">User Name <font fgcolor="#ff0000"> * </font></string>
+    <string name="congratulations">Congratulations</string>
+    <string name="password_reset_success">Password reset email has been sent on register email id</string>
+    <string name="username_reset_success">Username reset email has been sent on register email id</string>
+    <string name="warning">Unauthorized Access</string>
+    <string name="no_response">"The system is temporarily unavailable. Please try again later"</string>
+    <string name="enter_otp">Enter OTP here</string>
+    <string name="registration_success"><b>Registration has been done successfully.</b>\nWe sent you an email for account verification</string>
+    <string name="login_400">Your email id/username is already used in InstaApp application for one of the platform. You can login to Insta App or register with new email id/username</string>
+    <string name="change_your_password"><u>Change Your Password</u></string>
+    <string name="password_change_successfully">Your password has been successfully changed!</string>
+
+    <string name="session_heading">Your Session has expired</string>
+    <string name="session_message">If you want to continue, Please login again</string>
+    <string name="success">Success</string>
+    <string name="test_drive_booking_success">Your test drive booking request to successful submitted</string>
+    <string name="Session_first_line">Session has been expired.</string>
+    <string name="Session_second_line">Please login again</string>
+    <string name="top_brands"><u>Top Brands</u></string>
+    <string name="top_cars"><u>Top Cars</u></string>
+    <string name="hot_deals"><u>Hot Deals</u></string>
+    <string name="view_all_cars"><u>View All Cars</u></string>
+    <string name="view_all_specification"><u>Show All Specifications</u></string>
+    <string name="hide_all_specification"><u>Hide All Specifications</u></string>
+    <string name="view_all_inspection"><u>Show All Inspection</u></string>
+    <string name="hide_all_inspection"><u>Hide All Inspection</u></string>
+
+</resources>

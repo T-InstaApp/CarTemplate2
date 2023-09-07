@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal"
+        android:padding="@dimen/_2sdp">
+
+        <TextView
+            android:id="@+id/txtHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/left_margin"
+            android:layout_marginTop="@dimen/left_margin"
+            android:layout_marginEnd="@dimen/left_margin"
+            android:layout_marginBottom="@dimen/left_margin"
+            android:fontFamily="@font/nunito_regular"
+            android:gravity="center"
+            android:text="@string/ok"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/heading" />
+
+        <ImageView
+            android:id="@+id/imgCancel"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:contentDescription="@string/content_description"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_cancel"
+            app:tint="@color/white" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/left_margin"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:fontFamily="@font/nunito_regular"
+        android:text=""
+        android:textAlignment="textStart"
+        android:textColor="@color/headingColor"
+        android:textSize="@dimen/heading" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginHorizontal="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:background="@drawable/background_round_padded"
+        android:fontFamily="@font/nunito_regular"
+        android:paddingHorizontal="@dimen/_8sdp"
+        android:text="@string/ok"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/heading" />
+
+</LinearLayout>

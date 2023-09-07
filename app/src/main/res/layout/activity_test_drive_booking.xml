@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal"
+    android:orientation="vertical"
+    tools:context=".ui.home.HomeFragment">
+
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/toolbar"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolBar"
+        android:background="@drawable/rounded_corner_top_left"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/edittext_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_3sdp">
+
+                <TextView
+                    android:id="@+id/productName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/productPrice"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="Product Name"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/productPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="Product Price"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_corner_top_left"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="@string/where_would_you_like_to_test_drive_this_car"
+                    android:textColor="@color/headingColor"
+                    android:textSize="@dimen/heading" />
+
+                <RadioGroup
+                    android:id="@+id/radioGLocationType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:buttonTint="@color/headingColor"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="Home"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <RadioButton
+                        android:id="@+id/radioCompany"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:buttonTint="@color/headingColor"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="Company Hub"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+                </RadioGroup>
+
+                <LinearLayout
+                    android:id="@+id/addressLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="Enter Your Address"
+                        android:textColor="@color/headingColor"
+                        android:textSize="@dimen/heading" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="Full Name "
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <EditText
+                        android:id="@+id/etFullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/edittext_shadow"
+                        android:gravity="center_vertical"
+                        android:hint="Full Name"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="Phone"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <EditText
+                        android:id="@+id/etPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/edittext_shadow"
+                        android:gravity="center_vertical"
+                        android:hint="Phone"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="Enter Locality"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <EditText
+                        android:id="@+id/etLocality"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/edittext_shadow"
+                        android:gravity="center_vertical"
+                        android:hint="Building name, Road name, Area, Colony"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Postal Code"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/normal_text" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="City"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/normal_text" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+
+                        <EditText
+                            android:id="@+id/etPostalCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/edittext_shadow"
+                            android:gravity="center_vertical"
+                            android:hint="Postal Code"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/normal_text" />
+
+                        <EditText
+                            android:id="@+id/etCity"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/edittext_shadow"
+                            android:gravity="center_vertical"
+                            android:hint="City"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/normal_text" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="State"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <EditText
+                        android:id="@+id/etState"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/edittext_shadow"
+                        android:gravity="center_vertical"
+                        android:hint="State"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="Enter Landmark"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <EditText
+                        android:id="@+id/etLandMark"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/edittext_shadow"
+                        android:gravity="center_vertical"
+                        android:hint="Landmark"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="Date"
+                        android:textColor="@color/headingColor"
+                        android:textSize="@dimen/heading" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="Time"
+                        android:textColor="@color/headingColor"
+                        android:textSize="@dimen/heading" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/etDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/_3sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edittext_shadow"
+                        android:focusable="false"
+                        android:gravity="center_vertical"
+                        android:hint="Select date"
+                        android:inputType="none"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <EditText
+                        android:id="@+id/etTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edittext_shadow"
+                        android:focusable="false"
+                        android:gravity="center_vertical"
+                        android:hint="Select time"
+                        android:inputType="none"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnBookTestDrive"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginHorizontal="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/background_round_padded"
+                    android:fontFamily="@font/nunito_regular"
+                    android:paddingHorizontal="@dimen/_8sdp"
+                    android:text="Confirm Test Drive"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/heading" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <include layout="@layout/progress_dialog_layout"
+        android:id="@+id/progress"/>
+
+</RelativeLayout>

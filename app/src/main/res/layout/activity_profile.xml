@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="profileData"
+            type="com.example.cartemplate2.datamodel.ProfileResult" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/teal"
+        android:orientation="vertical"
+        tools:context=".ui.home.HomeFragment">
+
+        <include
+            android:id="@+id/toolBar"
+            layout="@layout/toolbar"
+            android:visibility="gone" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolBar"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_top_left"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_15sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_94sdp"
+                    android:layout_height="@dimen/_54sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/logo" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:gravity="center_horizontal"
+                    android:text="Profile"
+                    android:textColor="@color/headingColor"
+                    android:textSize="@dimen/main_heading"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Salutation"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/normal_text" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteSalutation"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/border_line"
+                    android:fontFamily="@font/nunito_regular"
+                    android:hint="Please select salutation"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="@={profileData.salutation}"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/normal_text" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Username"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/normal_text" />
+
+
+                <EditText
+                    android:id="@+id/etUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/border_line"
+                    android:enabled="false"
+                    android:fontFamily="@font/nunito_regular"
+                    android:hint="Please enter username"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="@={profileData.customer.username}"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/normal_text" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="First Name"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/normal_text" />
+
+                <EditText
+                    android:id="@+id/etFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/border_line"
+                    android:fontFamily="@font/nunito_regular"
+                    android:hint="Please enter first name"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="@={profileData.customer.first_name}"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/normal_text" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Last Name"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/normal_text" />
+
+                <EditText
+                    android:id="@+id/etLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/border_line"
+                    android:fontFamily="@font/nunito_regular"
+                    android:hint="Please enter last name"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="@={profileData.customer.last_name}"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/normal_text" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Email"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/normal_text" />
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/border_line"
+                    android:enabled="false"
+                    android:fontFamily="@font/nunito_regular"
+                    android:hint="Please enter email"
+                    android:inputType="textEmailAddress"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="@={profileData.customer.email}"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/normal_text" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_weight="1.5"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="Code"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="Mobile"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/etCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_1sdp"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/border_line"
+                        android:digits="+1234567890"
+                        android:fontFamily="@font/nunito_regular"
+                        android:hint="+1"
+                        android:inputType="number"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text"
+                        app:SetEditTextValue="@{``+profileData.code}" />
+
+                    <EditText
+                        android:id="@+id/etMobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_1sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_line"
+                        android:digits="0123456789"
+                        android:fontFamily="@font/nunito_regular"
+                        android:hint="Please enter mobile"
+                        android:inputType="phone"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/normal_text"
+                        app:SetEditTextValue="@{``+profileData.phone}" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/updateProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_round_padded"
+                    android:fontFamily="@font/nunito_regular"
+                    android:paddingHorizontal="@dimen/_3sdp"
+                    android:text="Update Profile"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/heading" />
+
+
+                <TextView
+                    android:id="@+id/txtSignIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:text="Already have any account? Sign In"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/normal_text" />
+
+                <TextView
+                    android:id="@+id/txtChangePassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:text="@string/change_your_password"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/normal_text" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <include
+            android:id="@+id/progress"
+            layout="@layout/progress_dialog_layout" />
+    </RelativeLayout>
+</layout>

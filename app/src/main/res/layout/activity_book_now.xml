@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal"
+    android:orientation="vertical"
+    tools:context=".ui.home.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/border_line"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_extrabold"
+            android:text="Booking Confirmation"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/main_heading" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                android:fontFamily="@font/nunito_regular"
+                android:text="Brand"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/normal_text" />
+
+            <TextView
+                android:id="@+id/txtBrand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:text=" - Tata "
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/normal_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                android:fontFamily="@font/nunito_regular"
+                android:text="Model"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/normal_text" />
+
+            <TextView
+                android:id="@+id/txtModel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:text=" - 2017 Tata Tiago "
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/normal_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                android:fontFamily="@font/nunito_regular"
+                android:text="Price"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/normal_text" />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:text=" - 24.25 K "
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/normal_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="Booking Amount"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/heading" />
+
+            <TextView
+                android:id="@+id/txtBookingAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_extrabold"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:text=" - 2017 Tata Tiago "
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/heading" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_2sdp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtKey1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:fontFamily="@font/nunito_regular"
+                android:text=""
+                android:textColor="@color/grey"
+                android:textSize="@dimen/normal_text" />
+
+            <TextView
+                android:id="@+id/txtValue1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_regular"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:text=""
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/normal_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_2sdp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtKey2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:fontFamily="@font/nunito_regular"
+                android:text=""
+                android:textColor="@color/grey"
+                android:textSize="@dimen/normal_text" />
+
+            <TextView
+                android:id="@+id/txtValue2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_regular"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:text=""
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/normal_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_2sdp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtKey3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:fontFamily="@font/nunito_regular"
+                android:text=""
+                android:textColor="@color/grey"
+                android:textSize="@dimen/normal_text" />
+
+            <TextView
+                android:id="@+id/txtValue3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_regular"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:text=""
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/normal_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_2sdp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtKey4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:fontFamily="@font/nunito_regular"
+                android:text=""
+                android:textColor="@color/grey"
+                android:textSize="@dimen/normal_text" />
+
+            <TextView
+                android:id="@+id/txtValue4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_regular"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:text=""
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/normal_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCancel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:layout_weight="1"
+                android:background="@drawable/background_round_padded"
+                android:fontFamily="@font/nunito_regular"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bookNow"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:layout_weight="1"
+                android:background="@drawable/background_round_padded"
+                android:fontFamily="@font/nunito_regular"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:text="Book Now"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

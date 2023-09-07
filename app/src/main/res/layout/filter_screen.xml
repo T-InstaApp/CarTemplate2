@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/_15sdp"
+    android:background="@drawable/rounded_dialog_background"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/_5sdp"
+    android:paddingBottom="@dimen/_8sdp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnApply"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/_5sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_round_grey"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingVertical="@dimen/_2sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="0dp"
+                android:text="Applied Filter"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/selectedShipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_round_grey"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingVertical="@dimen/_2sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="0dp"
+                android:text="Brands"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/brandChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                app:singleSelection="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_round_grey"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingVertical="@dimen/_2sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="0dp"
+                android:text="Model Year"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/modelYearChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                app:singleSelection="true" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_round_grey"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingVertical="@dimen/_2sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="0dp"
+                android:text="Price Range"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/priceRangeChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_round_grey"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingVertical="@dimen/_2sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="0dp"
+                android:text="Fuel Type"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/fuelChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp" />
+
+            <TextView
+                android:id="@+id/txtTransmission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_round_grey"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingVertical="@dimen/_2sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:text="Transmission"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading"
+                app:drawableEndCompat="@drawable/ic_arrow_down" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/transmissionChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txtOwnership"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_round_grey"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingVertical="@dimen/_2sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:text="Ownership"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading"
+                app:drawableEndCompat="@drawable/ic_arrow_down" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/ownerChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txtBodyType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_round_grey"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingVertical="@dimen/_2sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:text="Body Type"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading"
+                app:drawableEndCompat="@drawable/ic_arrow_down" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/bodyTypeChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txtKms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_round_grey"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingVertical="@dimen/_2sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:text="Kms Driven"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading"
+                app:drawableEndCompat="@drawable/ic_arrow_down" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/kmChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txtColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/background_round_grey"
+                android:elevation="@dimen/_2sdp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingVertical="@dimen/_2sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:text="Color"
+                android:textColor="@color/white"
+                android:textSize="@dimen/heading"
+                app:drawableEndCompat="@drawable/ic_arrow_down" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/colorChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnApply"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@drawable/background_round_padded"
+        android:fontFamily="@font/nunito_regular"
+        android:paddingHorizontal="@dimen/_8sdp"
+        android:text="Apply"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/heading" />
+
+</RelativeLayout>

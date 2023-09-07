@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/textViewInterval1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:background="@drawable/border_line"
+        android:fontFamily="@font/nunito_regular"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_3sdp"
+        android:text="@string/booking"
+        android:textColor="@color/teal"
+        android:textSize="@dimen/normal_text" />
+
+    <TextView
+        android:id="@+id/textViewInterval2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_weight="1"
+        android:background="@drawable/border_line"
+        android:fontFamily="@font/nunito_regular"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_3sdp"
+        android:text="@string/booking"
+        android:textColor="@color/teal"
+        android:textSize="@dimen/normal_text" />
+
+</LinearLayout>
