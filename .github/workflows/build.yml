@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # You can use ubuntu-latest for better compatibility with command-line tools
+    runs-on: ubuntu-latest  # Use ubuntu-latest for better compatibility with Gradle
 
     env:
       apk_name: Muncheese  # Set the static APK name here
@@ -25,6 +25,9 @@ jobs:
 
       - name: Set JAVA_HOME
         run: echo "JAVA_HOME=${{ runner.tool_cache }}/Java_Adopt_jdk_11.0.20-101/x64" >> $GITHUB_ENV
+
+      - name: Print JAVA_HOME
+        run: echo "JAVA_HOME is $JAVA_HOME"  # Verify that JAVA_HOME is correctly set
 
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
