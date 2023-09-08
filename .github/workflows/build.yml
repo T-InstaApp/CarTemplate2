@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      apk_name: ('t',)
+      apk_name: test
       updated_app_name: NK
 
     steps:
