@@ -100,7 +100,7 @@ jobs:
         run: |
           $env:BASE_URL = "https://restaurant60-be-dev-xtpocjmkpa-uw.a.run.app/app-url-update"
           $apk_url = ${{ steps.upload_apk.outputs.browser_download_url }}
-          $restaurant_id = "225"
+          $restaurant_id = 225
           $type = "Android"
           $API_URL = "$env:BASE_URL/?url=$apk_url&restaurant_id=$restaurant_id&type=$type"
           $response = Invoke-RestMethod -Uri $API_URL
