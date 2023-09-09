@@ -48,8 +48,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.1.1 # Replace with your desired tag name
-          release_name: Release v1.1.1 # Replace with your desired release name
+          tag_name: v1.1.16 # Replace with your desired tag name
+          release_name: Release v1.1.16 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -104,5 +104,5 @@ jobs:
           $type = "Android"
           $API_URL = "$env:BASE_URL/?url=$apk_url&restaurant_id=$restaurant_id&type=$type"
           $response = Invoke-RestMethod -Uri $API_URL
-          Write-Host "API Response: $response"
+          Write-Host "API Response: $response",vishal.upadhyay8550@tissatech.com
 
