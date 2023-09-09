@@ -48,8 +48,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.1.8 # Replace with your desired tag name
-          release_name: Release v1.1.8 # Replace with your desired release name
+          tag_name: v1.1.9 # Replace with your desired tag name
+          release_name: Release v1.1.9 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -94,4 +94,4 @@ jobs:
           body: |
             Here is the link to download the APK:
             ${{ steps.upload_apk.outputs.browser_download_url }}
-          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,roshan.shendre@tissatech.com,upadhyayv366@gmail.com,vishal.upadhyay8550@gmail.com,roshan.tissatech.com,roshan.shendre@tissatech.com
+          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,roshan.shendre@tissatech.com
