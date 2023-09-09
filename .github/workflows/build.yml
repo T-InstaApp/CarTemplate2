@@ -48,20 +48,21 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.6 # Replace with your desired tag name
-          release_name: Release v1.0.6 # Replace with your desired release name
+          tag_name: v1.0.7 # Replace with your desired tag name
+          release_name: Release v1.0.7 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set Release Asset Name
+        run: echo "APK_NAME=${{ env.apk_name }}.apk" >> $GITHUB_ENV
 
       - name: Rename and Upload APK
         run: |
           APK_NAME="${{ env.apk_name }}.apk" # Remove -debug from the APK name
           mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/$APK_NAME
           echo "Uploading APK: $APK_NAME"
-          echo "::set-output name=apk_name::$APK_NAME"
-          echo "APK_NAME=$APK_NAME" >> $GITHUB_ENV
         shell: bash
 
       - name: Upload APK as Release Asset
