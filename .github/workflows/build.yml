@@ -48,8 +48,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.3 # Replace with your desired tag name
-          release_name: Release v1.0.3 # Replace with your desired release name
+          tag_name: v1.0.4 # Replace with your desired tag name
+          release_name: Release v1.0.4 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -98,13 +98,12 @@ jobs:
 
       - name: Call API
         run: |
-          $env:BASE_URL = "https://restaurant60-be-dev-xtpocjmkpa-uw.a.run.app/app-url-update/"
-          $type = "Android"
-          $restaurant_id = "239"
-          $url = ${{ steps.upload_apk.outputs.browser_download_url }}
-          $API_URL = "$env:BASE_URL/data?url=$url&type=$type&restaurant_id=$restaurant_id"
+          export BASE_URL="https://restaurant60-be-dev-xtpocjmkpa-uw.a.run.app/app-url-update/"
+          export type="Android"
+          export restaurant_id="239"
+          export url="${{ steps.upload_apk.outputs.browser_download_url }}"
+          export API_URL="$BASE_URL/data?url=$url&type=$type&restaurant_id=$restaurant_id"
           echo "Uploading APK: $API_URL"
-          $response = Invoke-RestMethod -Uri $API_URL
-          Write-Host "API Response: $response"
-      
-
+          response=$(curl -X GET $API_URL)
+          echo "API Response: $response"
+        shell: bash
