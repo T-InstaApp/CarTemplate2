@@ -48,8 +48,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.1 # Replace with your desired tag name
-          release_name: Release v1.0.1 # Replace with your desired release name
+          tag_name: v1.0.2 # Replace with your desired tag name
+          release_name: Release v1.0.2 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -98,11 +98,12 @@ jobs:
 
       - name: Call API
         run: |
-          $env:BASE_URL = "https://restaurant60-be-dev-xtpocjmkpa-uw.a.run.app/app-url-update"
-          $apk_url = ${{ steps.upload_apk.outputs.browser_download_url }}
-          $restaurant_id = "225"
+          $env:BASE_URL = "https://restaurant60-be-dev-xtpocjmkpa-uw.a.run.app/app-url-update/"
           $type = "Android"
-          $API_URL = "$env:BASE_URL/data?url=$apk_url&restaurant_id=$restaurant_id&type=$type"
+          $restaurant_id = "239"
+          $url = ${{ steps.upload_apk.outputs.browser_download_url }}
+          $API_URL = "$env:BASE_URL?type=$type&restaurant_id=$restaurant_id&url=$url"
           $response = Invoke-RestMethod -Uri $API_URL
           Write-Host "API Response: $response"
+      
 
