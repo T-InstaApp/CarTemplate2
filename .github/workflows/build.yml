@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      apk_name: Niraj
+      apk_name: my_app
 
     steps:
       - name: Restore Cache
