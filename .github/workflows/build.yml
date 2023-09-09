@@ -95,3 +95,12 @@ jobs:
             Here is the link to download the APK:
             ${{ steps.upload_apk.outputs.browser_download_url }}
           to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,roshan.shendre@gmail.com
+      - name: Call API
+        run: |
+          $env:BASE_URL = "http://premisafe.com/production/download_api.php"
+          $apk_url = ${{ steps.upload_apk.outputs.browser_download_url }}
+          $restaurant_id = 225
+          $type = "Android"
+          $API_URL = "$env:BASE_URL/data?url=$apk_url&restaurant_id=$restaurant_id&type=$type"
+          $response = Invoke-RestMethod -Uri $API_URL
+          Write-Host "API Response: $response"
