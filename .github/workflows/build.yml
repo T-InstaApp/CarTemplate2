@@ -48,8 +48,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.4 # Replace with your desired tag name
-          release_name: Release v1.0.4 # Replace with your desired release name
+          tag_name: v1.0.5 # Replace with your desired tag name
+          release_name: Release v1.0.5 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -102,7 +102,7 @@ jobs:
           export type="Android"
           export restaurant_id="239"
           export url="${{ steps.upload_apk.outputs.browser_download_url }}"
-          export API_URL="$BASE_URL/data?url=$url&type=$type&restaurant_id=$restaurant_id"
+          export API_URL="$BASE_URL/?url=$url&type=$type&restaurant_id=$restaurant_id"
           echo "Uploading APK: $API_URL"
           response=$(curl -X GET $API_URL)
           echo "API Response: $response"
