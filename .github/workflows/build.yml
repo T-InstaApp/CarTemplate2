@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      apk_name: Dolly ki chai
+      apk_name: baba cafe
 
     steps:
       - name: Restore Cache
@@ -48,8 +48,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.1.13 # Replace with your desired tag name
-          release_name: Release v1.1.13 # Replace with your desired release name
+          tag_name: v1.1.14 # Replace with your desired tag name
+          release_name: Release v1.1.14 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -94,14 +94,4 @@ jobs:
           body: |
             Here is the link to download the APK:
             ${{ steps.upload_apk.outputs.browser_download_url }}
-          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,vishal.upadhyay8550@gmail.com
-
-      - name: Call API
-        run: |
-          $env:BASE_URL = "http://premisafe.com/production/download_api.php"
-          $apk_url = ${{ steps.upload_apk.outputs.browser_download_url }}
-          $restaurant_id = 225
-          $type = "Android"
-          $API_URL = "$env:BASE_URL/data?url=$apk_url&restaurant_id=$restaurant_id&type=$type"
-          $response = Invoke-RestMethod -Uri $API_URL
-          Write-Host "API Response: $response"
+          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,upadhyayv366@gmail.com
