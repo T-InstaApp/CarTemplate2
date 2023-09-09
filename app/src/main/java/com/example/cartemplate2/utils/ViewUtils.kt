@@ -96,7 +96,7 @@ fun showAlert(activity: Activity, title: String, message: String) {
         .setCancelable(false)
         .setPositiveButton(
             "Ok"
-        ) { dialog, which -> dialog?.dismiss() }.show()
+        ) { dialog, _ -> dialog?.dismiss() }.show()
 }
 
 fun currentTimeStamp(): String {

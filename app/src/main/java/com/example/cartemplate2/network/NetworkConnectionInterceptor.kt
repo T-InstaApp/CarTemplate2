@@ -23,7 +23,7 @@ class NetworkConnectionInterceptor(context: Context) : Interceptor {
     }
 
     private fun isInternetAvailable(): Boolean {
-        var result = false
+        val result: Boolean
         val connectivityManager =
             applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkCapabilities = connectivityManager.activeNetwork ?: return false

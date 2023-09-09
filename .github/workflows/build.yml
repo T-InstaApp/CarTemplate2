@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      apk_name: Muncheese
-      updated_app_name: NK
+      apk_name: Niraj
 
     steps:
       - name: Restore Cache
@@ -35,7 +34,7 @@ jobs:
 
       - name: Update AndroidManifest.xml
         run: |
-          sed -i "s/android:label=\"[^\"]*\"/android:label=\"${{ env.updated_app_name }}\"/" app/src/main/AndroidManifest.xml
+          sed -i "s/android:label=\"[^\"]*\"/android:label=\"${{ env.apk_name }}\"/" app/src/main/AndroidManifest.xml
 
       - name: Build APK
         run: ./gradlew assembleDebug
@@ -49,8 +48,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.10
-          release_name: Release v1.0.10
+          tag_name: v1.1.10 # Replace with your desired tag name
+          release_name: Release v1.1.10 # Replace with your desired tag name
           draft: false
           prerelease: false
         env:
@@ -58,7 +57,7 @@ jobs:
 
       - name: Rename and Upload APK
         run: |
-          APK_NAME="${{ env.updated_app_name }}-$apk_name.apk"
+          APK_NAME="${{ env.apk_name }}-$apk_name.apk"
           mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/$APK_NAME
           echo "Uploading APK: $APK_NAME"
           echo "::set-output name=apk_name::$APK_NAME"
@@ -82,3 +81,17 @@ jobs:
           path: |
             ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+
+      - name: Send Email Notification
+          uses: dawidd6/action-send-mail@v3
+          with:
+            server_address: smtp.gmail.com
+            server_port: 465
+            username: niraj07.k@gmail.com
+            password: ${{ secrets.GMAIL_TOKEN }}
+            from: niraj07.k@gmail.com
+            subject: APK Build Notification
+            body: |
+              Here is the link to download the APK:
+              ${{ steps.upload_apk.outputs.browser_download_url }}
+            to: niraj.kumar@tissatech.com

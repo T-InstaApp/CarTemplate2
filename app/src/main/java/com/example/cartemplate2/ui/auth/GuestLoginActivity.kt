@@ -1,5 +1,6 @@
 package com.example.cartemplate2.ui.auth
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
@@ -17,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.cartemplate2.MainActivity
+import com.example.cartemplate2.MainActivity2
 import com.example.cartemplate2.R
 import com.example.cartemplate2.databinding.ActivityGuestLoginBinding
 import com.example.cartemplate2.databinding.ProgressDialogLayoutBinding
@@ -39,6 +40,7 @@ class GuestLoginActivity : AppCompatActivity(), NetworkCallListener, KodeinAware
     private lateinit var toolbar: ToolbarBinding
     lateinit var progressLayout: ProgressDialogLayoutBinding
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGuestLoginBinding.inflate(layoutInflater)
@@ -115,7 +117,7 @@ class GuestLoginActivity : AppCompatActivity(), NetworkCallListener, KodeinAware
             PreferenceProvider(applicationContext).setBooleanValue(true, PreferenceKey.LOGIN_STATUS)
             PreferenceProvider(applicationContext).setStringValue("2", PreferenceKey.USER_PROFILE)
 
-            val intent = Intent(applicationContext, MainActivity::class.java)
+            val intent = Intent(applicationContext, MainActivity2::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
@@ -142,7 +144,7 @@ class GuestLoginActivity : AppCompatActivity(), NetworkCallListener, KodeinAware
         Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.logo))
             .into(imgAppLogo)
 
-        (dialog.findViewById<View>(R.id.btnSubmit) as Button).setOnClickListener { view: View? ->
+        (dialog.findViewById<View>(R.id.btnSubmit) as Button).setOnClickListener {
             dialog.dismiss()
             if (edtText.text.isNullOrEmpty() || edtText.text.toString().length < 2) {
                 toast(getString(R.string.enter_otp))

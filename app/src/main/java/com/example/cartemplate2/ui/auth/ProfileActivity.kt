@@ -1,5 +1,6 @@
 package com.example.cartemplate2.ui.auth
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -50,17 +51,17 @@ class ProfileFragment : Fragment(), KodeinAware, NetworkCallListener {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
         viewModel.networkCallListener = this
 
         toolbar = binding.toolBar
         progressBinding = binding.progress
         toolbar.txtTopHeading.text = "Profile"
         toolbar.icMenu.setImageResource(R.drawable.ic_back)
-        toolbar.icMenu.setOnClickListener { requireActivity().onBackPressed() }
 
         if (PreferenceProvider(requireContext()).getStringValue(PreferenceKey.USER_PROFILE) == "2") {
             binding.txtChangePassword.visibility = View.GONE

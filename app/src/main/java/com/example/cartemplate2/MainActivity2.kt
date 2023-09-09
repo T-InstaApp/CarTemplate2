@@ -12,11 +12,11 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.cartemplate2.databinding.ActivityMain2Binding
 import com.example.cartemplate2.databinding.BottomNavigationBarMainBinding
-import com.example.cartemplate2.databinding.CustomToolbarBinding
 import com.example.cartemplate2.databinding.DrawerLayoutBinding
 import com.example.cartemplate2.ui.auth.LoginActivity
 import com.example.cartemplate2.ui.auth.ProfileFragment
@@ -34,10 +34,9 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMain2Binding
     private lateinit var bottomNavBar: BottomNavigationBarMainBinding
     private lateinit var navigationDrawerBinding: DrawerLayoutBinding
-    private lateinit var customToolbarBinding: CustomToolbarBinding
-    //lateinit var toolbarBinding: CustomToolbarBinding
 
     var doubleBackToExitPressedOnce: Boolean = false
+    //val onBackPressedDispatcher = getOnBackPressedDispatcher()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //  setContentView(R.layout.activity_main2)
@@ -56,6 +55,23 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
         bottomNavBar.idSV.visibility = View.VISIBLE
         bottomNavBar.icMenu.visibility = View.GONE
         bottomNavBar.txtHeading.text = "Home"
+
+        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (supportFragmentManager.backStackEntryCount == 0) {
+                    if (doubleBackToExitPressedOnce) {
+                        finish()
+                        return
+                    } else {
+                        doubleBackToExitPressedOnce = true
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            doubleBackToExitPressedOnce = false
+                        }, 2000)
+                    }
+                }
+            }
+        })
+
         init()
         initSearchView()
         bottomNav()
@@ -145,6 +161,7 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+
     private fun init() {
         bottomNav()
         log(
@@ -209,7 +226,7 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initSearchView() {
-        bottomNavBar.idSV.setOnEditorActionListener { v, actionId, event ->
+        bottomNavBar.idSV.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 val searchText = v.text.toString().trim()
                 if (searchText.length > 2) {

@@ -42,6 +42,7 @@ class LoginActivity : AppCompatActivity(), KodeinAware, NetworkCallListener {
     private lateinit var viewModel: AuthViewModel
     private val factory: AuthViewModelFactory by instance()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -66,9 +67,9 @@ class LoginActivity : AppCompatActivity(), KodeinAware, NetworkCallListener {
 
         binding.btnLogin.setOnClickListener { checkValidation() }
 
-        /* binding.txtForgotPassword.setOnClickListener {
-             forgotUserPassword("User")
-         }*/
+        binding.txtForgotUserName.setOnClickListener {
+            forgotUserPassword("User")
+        }
         binding.txtForgotPassword.setOnClickListener {
             forgotUserPassword("Password")
         }
@@ -205,12 +206,6 @@ class LoginActivity : AppCompatActivity(), KodeinAware, NetworkCallListener {
     }
 
 
-
-
-
-
-
-
     private fun RestroAccess() {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // before
@@ -273,7 +268,7 @@ class LoginActivity : AppCompatActivity(), KodeinAware, NetworkCallListener {
         Glide.with(this).load(ContextCompat.getDrawable(this, R.drawable.logo))
             .into(imgAppLogo)
 
-        (dialog.findViewById<View>(R.id.btnSubmit) as Button).setOnClickListener { view: View? ->
+        (dialog.findViewById<View>(R.id.btnSubmit) as Button).setOnClickListener {
             if (edtText.text.isNullOrEmpty() || edtText.text.toString().length < 2) {
                 if (type == "User")
                     toast(getString(R.string.enter_your_email))
@@ -296,7 +291,7 @@ class LoginActivity : AppCompatActivity(), KodeinAware, NetworkCallListener {
             }
         }
 
-        imgCancel.setOnClickListener { view: View? -> dialog.dismiss() }
+        imgCancel.setOnClickListener { dialog.dismiss() }
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
         dialog.window!!.attributes = lp

@@ -120,7 +120,7 @@ class HomeFragment : Fragment(), NetworkCallListener, KodeinAware, RecyclerViewC
                 )
             }
     }
-
+    @Suppress("UNCHECKED_CAST")
     override fun <T> onSuccess(dataG: T, type: String) {
         progressLayout.progressLayout.notVisible()
         if (isAdded)
@@ -164,7 +164,7 @@ class HomeFragment : Fragment(), NetworkCallListener, KodeinAware, RecyclerViewC
     }
 
     private fun initSearchView() {
-        _binding!!.idSV.setOnEditorActionListener { v, actionId, event ->
+        _binding!!.idSV.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 val searchText = v.text.toString().trim()
                 if (searchText.length > 2) {

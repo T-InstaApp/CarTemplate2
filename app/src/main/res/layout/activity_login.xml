@@ -69,6 +69,18 @@
                 android:textSize="@dimen/normal_text" />
 
             <TextView
+                android:id="@+id/txtForgotUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_gravity="end"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:fontFamily="@font/nunito_regular"
+                android:text="Forgot Usename?"
+                android:textAlignment="textEnd"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/normal_text" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_20sdp"

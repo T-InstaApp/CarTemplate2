@@ -1,5 +1,6 @@
 package com.example.cartemplate2.ui.details
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,9 +45,10 @@ class TestDriveBookingListFragment : Fragment(), NetworkCallListener, RecyclerVi
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
         viewModel.homeListener = this
         toolbar = binding.toolBar
         progressLayout = binding.progressBar
@@ -54,7 +56,6 @@ class TestDriveBookingListFragment : Fragment(), NetworkCallListener, RecyclerVi
         toolbar.txtTopHeading.text = "Test Drive Booking List"
 
         toolbar.icMenu.setImageResource(R.drawable.ic_back)
-        toolbar.icMenu.setOnClickListener { requireActivity().onBackPressed() }
 
         loadData()
     }
@@ -79,7 +80,7 @@ class TestDriveBookingListFragment : Fragment(), NetworkCallListener, RecyclerVi
             else -> showAlert(requireActivity(), getString(R.string.alert), message)
         }
     }
-
+    @Suppress("UNCHECKED_CAST")
     override fun <T> onSuccess(dataG: T, type: String) {
         progressLayout.progressLayout.notVisible()
         if (type == "getTestDriveBookingData") {

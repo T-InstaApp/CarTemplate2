@@ -158,7 +158,7 @@ class DetailsActivity : AppCompatActivity(), KodeinAware, NetworkCallListener,
             )
         }
     }
-
+    @Suppress("UNCHECKED_CAST")
     override fun <T> onSuccess(dataG: T, type: String) {
         progressLayout.progressLayout.notVisible()
         if (type == "getProductImages") {

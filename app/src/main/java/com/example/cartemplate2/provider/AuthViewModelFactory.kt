@@ -6,9 +6,12 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.cartemplate2.model.AuthViewModel
 import com.example.cartemplate2.repositories.AuthRepository
 
+@Suppress("UNCHECKED_CAST")
 class AuthViewModelFactory(private val authRepository: AuthRepository) :
     ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
         return AuthViewModel(authRepository) as T
     }
 }
+
+

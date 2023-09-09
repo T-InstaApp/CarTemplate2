@@ -149,7 +149,7 @@ class ProductListActivity : AppCompatActivity(), KodeinAware, NetworkCallListene
             )
         }
     }
-
+    @Suppress("UNCHECKED_CAST")
     @SuppressLint("SetTextI18n")
     override fun <T> onSuccess(dataG: T, type: String) {
         progressLayout.progressLayout.notVisible()

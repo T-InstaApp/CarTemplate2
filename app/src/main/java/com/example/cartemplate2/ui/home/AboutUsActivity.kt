@@ -1,5 +1,6 @@
 package com.example.cartemplate2.ui.home
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
@@ -7,6 +8,7 @@ import android.webkit.WebViewClient
 import com.example.cartemplate2.R
 
 class AboutUsActivity : AppCompatActivity() {
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about_us)
@@ -24,6 +26,7 @@ class AboutUsActivity : AppCompatActivity() {
 
         // Handle navigation within the WebView
         webView.webViewClient = object : WebViewClient() {
+            @Deprecated("Deprecated in Java")
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
                 view.loadUrl(url)
                 return true

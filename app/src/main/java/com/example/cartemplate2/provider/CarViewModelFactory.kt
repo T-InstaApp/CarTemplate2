@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.cartemplate2.model.CarViewModel
 import com.example.cartemplate2.repositories.CarRepository
-
+@Suppress("UNCHECKED_CAST")
 class CarViewModelFactory(private val carRepository: CarRepository) :
     ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {

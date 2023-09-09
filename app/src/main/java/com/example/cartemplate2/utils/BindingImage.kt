@@ -33,13 +33,13 @@ fun loadRoundImage(view: RoundedImageView, url: String) {
 }
 
 @BindingAdapter("dateFormat2")
-fun formatDate2(view: TextView, date: String) {
+fun formatDate2(view: TextView, date1: String) {
     val old = "yyyy-MM-dd"
     val newFormat = "dd MMMM yyyy"
     var changeDate: String? = null
     try {
         val format: DateFormat = SimpleDateFormat(old, Locale.ENGLISH)
-        val date = format.parse(date)
+        val date = format.parse(date1)
         val newformat = SimpleDateFormat(newFormat, Locale.ENGLISH)
         val newDate = newformat.format(date!!)
         changeDate =
@@ -57,7 +57,7 @@ fun formatDate(view: TextView, dateTime: String) {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.getDefault())
     val outputFormat = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
     val parsedDate = inputFormat.parse(dateTime)
-    view.text = outputFormat.format(parsedDate)
+    view.text = outputFormat.format(parsedDate!!)
 }
 
 
