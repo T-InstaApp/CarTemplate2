@@ -49,7 +49,7 @@ jobs:
         uses: actions/create-release@v1
         with:
           tag_name: v1.1.10 # Replace with your desired tag name
-          release_name: Release v1.1.10 # Replace with your desired tag name
+          release_name: Release v1.1.10 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -57,7 +57,7 @@ jobs:
 
       - name: Rename and Upload APK
         run: |
-          APK_NAME="${{ env.apk_name }}-$apk_name.apk"
+          APK_NAME="${{ env.apk_name }}-debug.apk"
           mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/$APK_NAME
           echo "Uploading APK: $APK_NAME"
           echo "::set-output name=apk_name::$APK_NAME"
@@ -83,15 +83,15 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Send Email Notification
-          uses: dawidd6/action-send-mail@v3
-          with:
-            server_address: smtp.gmail.com
-            server_port: 465
-            username: niraj07.k@gmail.com
-            password: ${{ secrets.GMAIL_TOKEN }}
-            from: niraj07.k@gmail.com
-            subject: APK Build Notification
-            body: |
-              Here is the link to download the APK:
-              ${{ steps.upload_apk.outputs.browser_download_url }}
-            to: niraj.kumar@tissatech.com
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: niraj07.k@gmail.com
+          password: ${{ secrets.GMAIL_TOKEN }}
+          from: niraj07.k@gmail.com
+          subject: APK Build Notification
+          body: |
+            Here is the link to download the APK:
+            ${{ steps.upload_apk.outputs.browser_download_url }}
+          to: niraj.kumar@tissatech.com
