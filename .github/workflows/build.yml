@@ -107,4 +107,4 @@ jobs:
           echo "Uploading APK: $API_URL"
           response=$(curl -X GET $API_URL)
           echo "API Response: $response"
-        shell: bash,upadhyayv366@gmail.com
+        shell: bash
