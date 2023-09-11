@@ -95,7 +95,7 @@ jobs:
           body: |
             Here is the link to download the APK:
             ${{ steps.upload_apk.outputs.browser_download_url }}
-          to: niraj.kumar@tissatech.com,upadhyayv366@gmail.com,upadhyayv366@gmail.com,upadhyayv366@gmail.com, vishal.upadhyay@tissatech.com
+          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com
 
       - name: Call API
         run: |
