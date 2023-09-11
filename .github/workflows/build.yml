@@ -101,10 +101,10 @@ jobs:
         run: |
           export BASE_URL="https://restaurant60-be-dev-xtpocjmkpa-uw.a.run.app/app-url-update"
           export type="Android"
-          export restaurant_id=""226""
+          export restaurant_id= 226
           export url="${{ steps.upload_apk.outputs.browser_download_url }}"
           export API_URL="$BASE_URL/?url=$url&type=$type&restaurant_id=$restaurant_id"
           echo "Uploading APK: $API_URL"
           response=$(curl -X GET $API_URL)
           echo "API Response: $response"
-        shell: bash,vishal.upadhyay8550@tissatech.com
+        shell: bash
