@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      apk_name: Rasoi 
+      apk_name: Daddy
 
     steps:
       - name: Restore Cache
@@ -48,8 +48,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.34 # Replace with your desired tag name
-          release_name: Release v1.0.34 # Replace with your desired release name
+          tag_name: v1.0.35 # Replace with your desired tag name
+          release_name: Release v1.0.35 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -95,12 +95,12 @@ jobs:
           body: |
             Here is the link to download the APK:
             ${{ steps.upload_apk.outputs.browser_download_url }}
-          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,sayali.tembhurne@tissatech.com
+          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,roshan.shendre@tissatech.com
       - name: Call API
         run: |
           export BASE_URL="https://restaurant60-be-dev-xtpocjmkpa-uw.a.run.app/app-url-update"
           export type="Android"
-          export restaurant_id= 239
+          export restaurant_id= 228
           export url="${{ steps.upload_apk.outputs.browser_download_url }}"
           export API_URL="$BASE_URL/?url=$url&type=$type&restaurant_id=$restaurant_id"
           echo "Uploading APK: $API_URL"
