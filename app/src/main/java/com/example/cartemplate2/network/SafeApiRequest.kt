@@ -6,7 +6,6 @@ import retrofit2.Response
 
 
 abstract class  SafeApiRequest {
-
     suspend fun <T : Any> apiRequest(call: suspend () -> Response<T>): T? {
 
         val response = call.invoke()
@@ -14,7 +13,6 @@ abstract class  SafeApiRequest {
             val resData = response.body()
             return resData
         } else {
-
             val error = response.errorBody()?.string()
             var message = "NA"
             error?.let {
