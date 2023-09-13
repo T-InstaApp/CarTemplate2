@@ -11,7 +11,7 @@ jobs:
 
     env:
       apk_name: Niraj
-      APK_VERSION: 1.0.77
+      APK_VERSION: 1.0.78
 
     steps:
       - name: Restore Cache
@@ -37,18 +37,6 @@ jobs:
         run: |
           sed -i "s/android:label=\"[^\"]*\"/android:label=\"${{ env.apk_name }}\"/" app/src/main/AndroidManifest.xml
 
-      - name: Determine current versionName
-        id: determine_version
-        run: |
-          CURRENT_VERSION=$APK_VERSION
-          echo "Current Version: $CURRENT_VERSION"
-          echo "CURRENT_VERSION=$CURRENT_VERSION" >> $GITHUB_ENV
-
-      - name: Update versionName in build.gradle
-        run: |
-          sed -i "s/versionName \"[^\"]*\"/versionName \"${{ steps.determine_version.outputs.CURRENT_VERSION }}\"/" app/build.gradle
-        working-directory: ${{ github.workspace }}
-
       - name: Build APK
         run: ./gradlew assembleDebug
 
@@ -61,30 +49,12 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.77 # Replace with your desired tag name
-          release_name: Release v1.0.77 # Replace with your desired release name
+          tag_name: v1.0.78 # Replace with your desired tag name
+          release_name: Release v1.0.78 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload APK to Public Repository
-        run: |
-          apk_name="${{ env.apk_name }}.apk" # Modify as needed
-          gh auth login --with-token ${{ env.CAR_PUBLIC_TOKE }}
-          gh repo upload "T-InstaApp/CarTemplate2Public$APK_NAME"
-        env:
-          PAT_TOKEN: ${{ env.CAR_PUBLIC_TOKE }}
-      
-      - name: Get APK Download URL
-        id: get_apk_url
-        run: |
-          response=$(curl -s -H "Authorization: Bearer ${{ env.CAR_PUBLIC_TOKE }} \
-            "https://api.github.com/repos/T-InstaApp/CarTemplate2Public/releases/latest")
-          download_url=$(echo "$response" | jq -r '.assets[] | select(.name == "$apk_name.apk") | .browser_download_url')
-          echo "Download URL: $download_url"
-        env:
-          PAT_TOKEN: ${{ env.CAR_PUBLIC_TOKE }}
 
       - name: Set Release Asset Name
         run: echo "APK_NAME=${{ env.apk_name }}.apk" >> $GITHUB_ENV
@@ -107,6 +77,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Save Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+
       - name: Send Email Notification
         uses: dawidd6/action-send-mail@v3
         with:
@@ -118,7 +95,7 @@ jobs:
           subject: APK Build Notification
           body: |
             Here is the link to download the APK:
-            ${{ steps.get_apk_url.outputs.browser_download_url }}
+            ${{ steps.upload_apk.outputs.browser_download_url }}
           to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com
 
       - name: Call API
@@ -126,7 +103,7 @@ jobs:
           export BASE_URL="https://restaurant60-be-dev-xtpocjmkpa-uw.a.run.app/app-url-update"
           export type="Android"
           export restaurant_id="239"
-          export url="${{ steps.get_apk_url.outputs.browser_download_url }}"
+          export url="${{ steps.upload_apk.outputs.browser_download_url }}"
           export API_URL="$BASE_URL/?url=$url&type=$type&restaurant_id=$restaurant_id"
           echo "Uploading APK: $API_URL"
           response=$(curl -X GET $API_URL)
