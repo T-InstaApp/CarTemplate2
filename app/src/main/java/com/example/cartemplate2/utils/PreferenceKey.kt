@@ -14,5 +14,5 @@ object PreferenceKey {
     const val USER_ID = "user_id"
     const val LOGIN_TYPE = "login_type"
     const val USER_PROFILE = "user_profile"
-
+    const val APP_URL = "app_url"
 }

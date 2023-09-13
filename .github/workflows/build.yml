@@ -36,6 +36,21 @@ jobs:
         run: |
           sed -i "s/android:label=\"[^\"]*\"/android:label=\"${{ env.apk_name }}\"/" app/src/main/AndroidManifest.xml
 
+      - name: Determine current versionName
+        id: determine_version
+        run: |
+          CURRENT_VERSION=$(grep "versionName" app/build.gradle | sed -n 's/.*versionName "\([^"]*\)".*/\1/p')
+          echo "Current Version: $CURRENT_VERSION"
+          # Increment the version (e.g., from 1.0.43 to 1.0.44)
+          NEW_VERSION="${CURRENT_VERSION%.*}.$((${CURRENT_VERSION##*.}+1))"
+          echo "New Version: $NEW_VERSION"
+          echo "::set-output name=NEW_VERSION::$NEW_VERSION"
+
+      - name: Update versionName in build.gradle
+        run: |
+          sed -i "s/versionName \"[^\"]*\"/versionName \"${{ steps.determine_version.outputs.NEW_VERSION }}\"/" app/build.gradle
+        working-directory: ${{ github.workspace }}
+
       - name: Build APK
         run: ./gradlew assembleDebug
 
@@ -48,8 +63,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.40 # Replace with your desired tag name
-          release_name: Release v1.0.40 # Replace with your desired release name
+          tag_name: v1.0.50 # Replace with your desired tag name
+          release_name: Release v1.0.50 # Replace with your desired release name
           draft: false
           prerelease: false
         env:

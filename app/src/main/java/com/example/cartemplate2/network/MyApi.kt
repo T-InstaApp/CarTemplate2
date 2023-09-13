@@ -1,8 +1,13 @@
 package com.example.cartemplate2.network
 
+import android.content.Context
 import com.example.cartemplate2.datamodel.*
+import com.example.cartemplate2.utils.PreferenceKey
+import com.example.cartemplate2.utils.PreferenceProvider
 import com.example.cartemplate2.utils.StaticValue
+import com.example.cartemplate2.utils.log
 import com.google.gson.JsonObject
+import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -241,8 +246,27 @@ owner:2nd owner*/
         @Query("fuel") fuel: String?
     ): Response<ArrayList<ProductDataMode>>
 
+
+    @Headers("Content-Type: application/json")
+    @POST("build-details/")
+    suspend fun updateTrailTime(
+        @Header("Authorization") authorization: String?,
+        @Body login: JsonObject
+    ): Response<TemplateData>
+
+
+    @Headers("Content-Type: application/json")
+    @GET("get-master-category/{id}/")
+    suspend fun getMasterCat(
+        @Header("Authorization") authorization: String?,
+        @Path("id") type: String?,
+    ): Response<ArrayList<MasterCategoryDataModel>>
+
     companion object {
-        operator fun invoke(networkConnectionInterceptor: NetworkConnectionInterceptor): MyApi {
+        operator fun invoke(
+            networkConnectionInterceptor: NetworkConnectionInterceptor,
+            context: Context
+        ): MyApi {
             val okHttpClient = OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)

@@ -45,4 +45,14 @@ class PreferenceProvider(context: Context) {
     }
 
 
+    fun setLongValue(intData: Long, KEY: String) {
+        editor.putLong(KEY, intData)
+        editor.apply()
+    }
+
+    fun getLongValue(KEY: String): Long {
+        return sharedPreferences.getLong(KEY, 0)
+    }
+
+
 }

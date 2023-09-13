@@ -56,6 +56,12 @@ class HomeFragment : Fragment(), NetworkCallListener, KodeinAware, RecyclerViewC
             startActivity(intent)
         }
 
+        viewModel.getMasterCat(
+            "Token " + PreferenceProvider(requireContext()).getStringValue(
+                PreferenceKey.APP_TOKEN
+            )!!, "225"
+        )
+
         initSearchView()
         loadCategoryData()
         loadTopCarData()
@@ -120,6 +126,7 @@ class HomeFragment : Fragment(), NetworkCallListener, KodeinAware, RecyclerViewC
                 )
             }
     }
+
     @Suppress("UNCHECKED_CAST")
     override fun <T> onSuccess(dataG: T, type: String) {
         progressLayout.progressLayout.notVisible()

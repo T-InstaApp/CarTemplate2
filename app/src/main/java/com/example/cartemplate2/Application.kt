@@ -23,7 +23,7 @@ class Application : Application(), KodeinAware {
         import(androidXModule(this@Application))
 
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
-        bind() from singleton { MyApi(instance()) }
+        bind() from singleton { MyApi(instance(), applicationContext) }
         bind() from singleton { HomeRepository(instance()) }
         bind() from singleton { CarRepository(instance()) }
         bind() from singleton { AuthRepository(instance()) }

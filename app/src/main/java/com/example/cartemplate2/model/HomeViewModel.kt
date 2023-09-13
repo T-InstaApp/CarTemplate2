@@ -14,6 +14,7 @@ import com.example.cartemplate2.repositories.HomeRepository
 import com.example.cartemplate2.utils.*
 import com.google.gson.JsonObject
 import kotlinx.coroutines.Job
+import okhttp3.FormBody
 
 class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
 
@@ -191,6 +192,42 @@ class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
                 )
                 response.let {
                     homeListener?.onSuccess(it, "getProductFilterData")
+                    return@main
+                }
+            } catch (e: ApiException) {
+                homeListener?.onFailure(e.message!!.split("@")[0], e.message!!.split("@")[1])
+            } catch (e: NoInternetException) {
+                homeListener?.onFailure(e.message!!, CommonKey.NO_INTERNET)
+            }
+        }
+    }
+
+
+    fun getUpdateTrailTime(token: String, data: JsonObject) {
+        homeListener?.onStarted()
+        Coroutines.main {
+            try {
+                val response = repository.updateTrailTime(token, data)
+                response.let {
+                    homeListener?.onSuccess(it, "updateTrailTime")
+                    return@main
+                }
+            } catch (e: ApiException) {
+                homeListener?.onFailure(e.message!!.split("@")[0], e.message!!.split("@")[1])
+            } catch (e: NoInternetException) {
+                homeListener?.onFailure(e.message!!, CommonKey.NO_INTERNET)
+            }
+        }
+    }
+
+    fun getMasterCat(token: String, id: String) {
+        homeListener?.onStarted()
+        Coroutines.main {
+            try {
+                val response = repository.getMasterCat(token, id)
+                response.let {
+                    log("getMasterCat ", " $it")
+                    homeListener?.onSuccess(it, "getMasterCat")
                     return@main
                 }
             } catch (e: ApiException) {

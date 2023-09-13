@@ -8,6 +8,7 @@ import com.example.cartemplate2.network.MyApi
 import com.example.cartemplate2.network.SafeApiRequest
 import com.example.cartemplate2.paging.DataPagingSource
 import com.google.gson.JsonObject
+import okhttp3.FormBody
 
 class HomeRepository(private val api: MyApi) : SafeApiRequest() {
     suspend fun getCategory(token: String, restID: String) =
@@ -59,5 +60,12 @@ class HomeRepository(private val api: MyApi) : SafeApiRequest() {
                 modelYear, owner, fuel
             )
         }
+
+
+    suspend fun updateTrailTime(token: String, data: JsonObject) =
+        apiRequest { api.updateTrailTime(token, data) }
+
+    suspend fun getMasterCat(token: String, data: String) =
+        apiRequest { api.getMasterCat(token, data) }
 
 }
