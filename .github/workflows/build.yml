@@ -11,7 +11,8 @@ jobs:
 
     env:
       apk_name: Niraj
-      APK_VERSION: 1.0.91
+      APK_VERSION: 1.0.92
+      APK_NAME: Niraj.apk
 
     steps:
       - name: Restore Cache
@@ -49,8 +50,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.91 # Replace with your desired tag name
-          release_name: Release v1.0.91 # Replace with your desired release name
+          tag_name: v1.0.92 # Replace with your desired tag name
+          release_name: Release v1.0.92 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -73,9 +74,9 @@ jobs:
 
       - name: Set Environment Variables
         run: |
-          echo "UPLOAD_REPO_OWNER=other_owner" >> $GITHUB_ENV
-          echo "UPLOAD_REPO_NAME=other_repo" >> $GITHUB_ENV
-          echo "UPLOAD_URL=https://uploads.github.com/repos/${UPLOAD_REPO_OWNER}/${UPLOAD_REPO_NAME}/releases/${{ steps.create_release.outputs.upload_id }}/assets{?name,label}" >> $GITHUB_ENV
+          echo "UPLOAD_REPO_OWNER=T-InstaApp" >> $GITHUB_ENV
+          echo "UPLOAD_REPO_NAME=CarTemplate2Public" >> $GITHUB_ENV
+          echo "UPLOAD_URL=https://uploads.github.com/repos/${UPLOAD_REPO_OWNER}/${UPLOAD_REPO_NAME}/releases/${{ steps.create_release.outputs.upload_id }}/assets?name=${{ env.APK_NAME }}" >> $GITHUB_ENV
 
       - name: Upload APK
         uses: actions/upload-release-asset@v1
