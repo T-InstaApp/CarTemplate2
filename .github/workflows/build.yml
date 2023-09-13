@@ -11,7 +11,7 @@ jobs:
 
     env:
       apk_name: Niraj
-      APK_VERSION: 1.0.72
+      APK_VERSION: 1.0.73
 
     steps:
       - name: Restore Cache
@@ -61,8 +61,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.72 # Replace with your desired tag name
-          release_name: Release v1.0.72 # Replace with your desired release name
+          tag_name: v1.0.73 # Replace with your desired tag name
+          release_name: Release v1.0.73 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -72,11 +72,10 @@ jobs:
         run: |
           apk_name="${{ env.apk_name }}.apk" # Modify as needed
           gh auth login --with-token "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"
-          gh repo upload "T-InstaApp/CarTemplate2Public" $apk_name
+          gh repo upload "T-InstaApp/CarTemplate2Public" "$apk_name"
         env:
           PAT_TOKEN: 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
-
-
+      
       - name: Get APK Download URL
         id: get_apk_url
         run: |
