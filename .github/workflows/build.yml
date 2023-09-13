@@ -71,13 +71,11 @@ jobs:
           echo "Create Release Outputs: ${{ toJson(steps.create_release.outputs) }}"
 
 
-      - name: Get Upload URL
-        id: get_upload_url
+      - name: Set Environment Variables
         run: |
-          echo "::set-env name=UPLOAD_REPO_OWNER::T-InstaApp"
-          echo "::set-env name=UPLOAD_REPO_NAME::CarTemplate2Public"
-          echo "::set-env name=UPLOAD_URL::https://uploads.github.com/repos/${UPLOAD_REPO_OWNER}/${UPLOAD_REPO_NAME}/releases/${{ steps.create_release.outputs.upload_id }}/assets{?name,label}"
-        shell: bash
+          echo "UPLOAD_REPO_OWNER=other_owner" >> $GITHUB_ENV
+          echo "UPLOAD_REPO_NAME=other_repo" >> $GITHUB_ENV
+          echo "UPLOAD_URL=https://uploads.github.com/repos/${UPLOAD_REPO_OWNER}/${UPLOAD_REPO_NAME}/releases/${{ steps.create_release.outputs.upload_id }}/assets{?name,label}" >> $GITHUB_ENV
 
       - name: Upload APK
         uses: actions/upload-release-asset@v1
