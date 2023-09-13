@@ -67,7 +67,7 @@ jobs:
         shell: bash
 
       - name: Upload APK as Release Asset
-        id: upload_apk
+        id: upload_apk2
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
