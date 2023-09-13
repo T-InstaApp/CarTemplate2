@@ -100,6 +100,9 @@ class SplashActivity : AppCompatActivity(), KodeinAware, NetworkCallListener {
         log("getUpdateTrailTime  ", " Called ")
         val jsonObject = JsonObject()
         val data = getAppVersion(applicationContext)
+
+        toast("Version :- ${data!!.versionName}")
+
         jsonObject.addProperty("template_id", "1")
         jsonObject.addProperty("build_version", "1.0.3")//data!!.versionNumber
         jsonObject.addProperty("type", "Android")
