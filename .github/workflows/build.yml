@@ -33,6 +33,13 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
 
+      - name: Set up GitHub CLI
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Install GitHub CLI
+        run: npm install -g gh
+
       - name: Update AndroidManifest.xml
         run: |
           sed -i "s/android:label=\"[^\"]*\"/android:label=\"${{ env.apk_name }}\"/" app/src/main/AndroidManifest.xml
