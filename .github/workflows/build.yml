@@ -11,7 +11,7 @@ jobs:
 
     env:
       apk_name: Niraj
-      APK_VERSION: 1.0.92
+      APK_VERSION: 1.0.93
 
     steps:
       - name: Restore Cache
@@ -49,22 +49,12 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.92 # Replace with your desired tag name
-          release_name: Release v1.0.92 # Replace with your desired release name
+          tag_name: v1.0.93 # Replace with your desired tag name
+          release_name: Release v1.0.93 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_FOR_TEST_REPO }}
-
-      - name: Set Release Asset Name
-        run: echo "APK_NAME=${{ env.apk_name }}.apk" >> $GITHUB_ENV
-
-      - name: Rename and Upload APK
-        run: |
-          APK_NAME="${{ env.apk_name }}.apk" # Remove -debug from the APK name
-          mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/$APK_NAME
-          echo "Uploading APK: $APK_NAME"
-        shell: bash
 
       - name: Debug create_release outputs
         run: |
