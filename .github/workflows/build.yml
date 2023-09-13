@@ -11,6 +11,7 @@ jobs:
 
     env:
       apk_name: Niraj
+      APK_VERSION: 1.0.53
 
     steps:
       - name: Restore Cache
@@ -39,16 +40,13 @@ jobs:
       - name: Determine current versionName
         id: determine_version
         run: |
-          CURRENT_VERSION=$(grep "versionName" app/build.gradle | sed -n 's/.*versionName "\([^"]*\)".*/\1/p')
+          CURRENT_VERSION=$APK_VERSION
           echo "Current Version: $CURRENT_VERSION"
-          # Increment the version (e.g., from 1.0.43 to 1.0.44)
-          NEW_VERSION="${CURRENT_VERSION%.*}.$((${CURRENT_VERSION##*.}+1))"
-          echo "New Version: $NEW_VERSION"
-          echo "::set-output name=NEW_VERSION::$NEW_VERSION"
+          echo "CURRENT_VERSION=$CURRENT_VERSION" >> $GITHUB_ENV
 
       - name: Update versionName in build.gradle
         run: |
-          sed -i "s/versionName \"[^\"]*\"/versionName \"${{ steps.determine_version.outputs.NEW_VERSION }}\"/" app/build.gradle
+          sed -i "s/versionName \"[^\"]*\"/versionName \"${{ steps.determine_version.outputs.CURRENT_VERSION }}\"/" app/build.gradle
         working-directory: ${{ github.workspace }}
 
       - name: Build APK
@@ -60,25 +58,42 @@ jobs:
           git config --global user.email "hello@instaapp.online"
 
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          tag_name: v1.0.51 # Replace with your desired tag name
-          release_name: Release v1.0.51 # Replace with your desired release name
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          id: create_release
+          uses: actions/create-release@v1
+          with:
+            tag_name: v1.0.53 # Replace with your desired tag name
+            release_name: Release v1.0.53 # Replace with your desired release name
+            draft: false
+            prerelease: false
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set Release as Public
+          run: |
+            gh release edit v1.0.53 --public
+          env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set Release Asset Name
         run: echo "APK_NAME=${{ env.apk_name }}.apk" >> $GITHUB_ENV
 
       - name: Rename and Upload APK
-        run: |
-          APK_NAME="${{ env.apk_name }}.apk" # Remove -debug from the APK name
-          mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/$APK_NAME
-          echo "Uploading APK: $APK_NAME"
-        shell: bash
+          run: |
+            APK_NAME="${{ env.apk_name }}.apk" # Remove -debug from the APK name
+            mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/$APK_NAME
+            echo "Uploading APK: $APK_NAME"
+          shell: bash
+
+      - name: Upload APK as Release Asset
+          id: upload_apk
+          uses: actions/upload-release-asset@v1
+          with:
+            upload_url: ${{ steps.create_release.outputs.upload_url }}
+            asset_path: app/build/outputs/apk/debug/${{ env.APK_NAME }}
+            asset_name: ${{ env.APK_NAME }}
+            asset_content_type: application/vnd.android.package-archive
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload APK as Release Asset
         id: upload_apk
