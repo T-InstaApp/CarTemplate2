@@ -75,14 +75,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up GitHub CLI
-        uses: actions/setup-gh@v1
-        with:
-          cli-version: 'latest'
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+          sudo apt-add-repository https://cli.github.com/packages
+          sudo apt update
+          sudo apt install gh
 
       - name: Make Release Public
         run: |
-          gh release edit v1.0.59 --public
+          gh release edit v1.0.57 --public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
