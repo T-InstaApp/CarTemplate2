@@ -67,7 +67,7 @@ jobs:
         shell: bash
 
       - name: Debug create_release outputs
-        run:
+        run: |
           echo "Create Release Outputs: ${{ toJson(steps.create_release.outputs) }}"
 
 
