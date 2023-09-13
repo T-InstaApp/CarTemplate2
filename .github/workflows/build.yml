@@ -11,7 +11,7 @@ jobs:
 
     env:
       apk_name: Niraj
-      APK_VERSION: 1.0.54
+      APK_VERSION: 1.0.55
 
     steps:
       - name: Restore Cache
@@ -61,18 +61,23 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.54 # Replace with your desired tag name
-          release_name: Release v1.0.54 # Replace with your desired release name
+          tag_name: v1.0.55 # Replace with your desired tag name
+          release_name: Release v1.0.55 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set Release as Public
-        run: |
-          gh release edit v1.0.54 --title "Release v1.0.54" --prerelease=false
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Make Release Public
+          run: |
+            release_id=$(jq -r '.id' $GITHUB_EVENT_PATH)
+            curl -X PATCH \
+              -H "Accept: application/vnd.github.v3+json" \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -d '{"private": false}' \
+              "https://api.github.com/repos/${{ github.repository }}/releases/$release_id"
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set Release Asset Name
         run: echo "APK_NAME=${{ env.apk_name }}.apk" >> $GITHUB_ENV
