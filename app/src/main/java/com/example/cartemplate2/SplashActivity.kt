@@ -147,6 +147,7 @@ class SplashActivity : AppCompatActivity(), KodeinAware, NetworkCallListener {
                 versionNumber = PackageInfoCompat.getLongVersionCode(packageInfo),
             )
         } catch (e: Exception) {
+            toast("Version :- $e")
             null
         }
     }
