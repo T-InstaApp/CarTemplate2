@@ -11,7 +11,7 @@ jobs:
 
     env:
       apk_name: Niraj
-      APK_VERSION: 1.0.104
+      APK_VERSION: 1.0.105
 
     steps:
       - name: Restore Cache
@@ -71,8 +71,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.104 # Replace with your desired tag name
-          release_name: Release v1.0.104 # Replace with your desired release name
+          tag_name: v1.0.105 # Replace with your desired tag name
+          release_name: Release v1.0.105 # Replace with your desired release name
           draft: false
           prerelease: false
         env:

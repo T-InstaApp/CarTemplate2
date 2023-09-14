@@ -101,25 +101,12 @@ class SplashActivity : AppCompatActivity(), KodeinAware, NetworkCallListener {
         val jsonObject = JsonObject()
         val data = getAppVersion(applicationContext)
 
-        toast("Version :- ${data!!.versionName}")
-
         jsonObject.addProperty("template_id", "1")
-        jsonObject.addProperty("build_version", "1.0.3")//data!!.versionNumber
+        jsonObject.addProperty("build_version", data!!.versionName)//data!!.versionNumber
         jsonObject.addProperty("type", "Android")
         jsonObject.addProperty("start_time", System.currentTimeMillis().toString())
         val timestampPlus24HoursMs = System.currentTimeMillis() + (24 * 60 * 60 * 1000)
         jsonObject.addProperty("end_time", timestampPlus24HoursMs)
-
-
-        /*  val data = getAppVersion(applicationContext)
-          val timestampPlus24HoursMs = System.currentTimeMillis() + (24 * 60 * 60 * 1000)
-          val formBody = FormBody.Builder()
-              .add("template_id", "value1")
-              .add("build_version", data!!.versionNumber.toString())
-              .add("type", "Android")
-              .add("start_time", System.currentTimeMillis().toString())
-              .add("end_time", timestampPlus24HoursMs.toString())
-              .build()*/
 
         viewModel.getUpdateTrailTime(
             "Token ${
@@ -147,7 +134,6 @@ class SplashActivity : AppCompatActivity(), KodeinAware, NetworkCallListener {
                 versionNumber = PackageInfoCompat.getLongVersionCode(packageInfo),
             )
         } catch (e: Exception) {
-            toast("Version :- $e")
             null
         }
     }
