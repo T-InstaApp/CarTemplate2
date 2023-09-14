@@ -38,12 +38,12 @@ jobs:
           sed -i "s/android:label=\"[^\"]*\"/android:label=\"${{ env.apk_name }}\"/" app/src/main/AndroidManifest.xml
 
       - name: Determine current version
-          id: determine_version
-          run: |
-            # Set a new version value here
-            NEW_VERSION="2.0.0"  # Change this to your desired version
-            echo "New Version: $NEW_VERSION"
-            echo "CURRENT_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+        id: determine_version
+        run: |
+          # Set a new version value here
+          NEW_VERSION="2.0.0"  # Change this to your desired version
+          echo "New Version: $NEW_VERSION"
+          echo "CURRENT_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
       - name: Update versionName in build.gradle
         run: |
