@@ -11,7 +11,7 @@ jobs:
 
     env:
       apk_name: Niraj
-      APK_VERSION: 1.0.103
+      APK_VERSION: 1.0.104
 
     steps:
       - name: Restore Cache
@@ -41,16 +41,16 @@ jobs:
         id: determine_version
         run: |
           # Set a new version value here
-          NEW_VERSION="2.0.0"  # Change this to your desired version
+          NEW_VERSION="${{ env.APK_VERSION }}"  # Change this to your desired version
           echo "New Version: $NEW_VERSION"
           echo "CURRENT_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-        
+
       - name: Update versionName in build.gradle
         run: |
-          sed -i "s/versionName \".*\"/versionName \"2.0.0\"/" app/build.gradle
+          NEW_VERSION="${{ env.APK_VERSION }}"
+          sed -i "s/versionName \".*\"/versionName \"$NEW_VERSION\"/" app/build.gradle
         working-directory: ${{ github.workspace }}
-                             
-                             
+
       - name: Commit changes and push
         run: |
           git config --local user.email "hello@instaapp.online"
@@ -71,8 +71,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.103 # Replace with your desired tag name
-          release_name: Release v1.0.103 # Replace with your desired release name
+          tag_name: v1.0.104 # Replace with your desired tag name
+          release_name: Release v1.0.104 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
