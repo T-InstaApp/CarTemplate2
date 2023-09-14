@@ -11,7 +11,7 @@ jobs:
 
     env:
       apk_name: Niraj
-      APK_VERSION: 1.0.100
+      APK_VERSION: 1.0.101
 
     steps:
       - name: Restore Cache
@@ -37,6 +37,18 @@ jobs:
         run: |
           sed -i "s/android:label=\"[^\"]*\"/android:label=\"${{ env.apk_name }}\"/" app/src/main/AndroidManifest.xml
 
+      - name: Determine current versionName
+        id: determine_version
+        run: |
+          CURRENT_VERSION=$APK_VERSION
+          echo "Current Version: $CURRENT_VERSION"
+          echo "CURRENT_VERSION=$CURRENT_VERSION" >> $GITHUB_ENV
+
+      - name: Update versionName in build.gradle
+        run: |
+          sed -i "s/versionName \"[^\"]*\"/versionName \"${{ steps.determine_version.outputs.CURRENT_VERSION }}\"/" app/build.gradle
+        working-directory: ${{ github.workspace }}
+
       - name: Build APK
         run: ./gradlew assembleDebug
 
@@ -45,42 +57,38 @@ jobs:
           git config --global user.name "T-InstaApp"
           git config --global user.email "hello@instaapp.online"
 
-      - name: Create Release in CarTemplate2Public Repo
-        id: create_release_public
+      - name: Create Release
+        id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.0.100
-          release_name: Release v1.0.100
+          tag_name: v1.0.101 # Replace with your desired tag name
+          release_name: Release v1.0.101 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_FOR_TEST_REPO }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set Release Asset Name for CarTemplate2Public Repo
+      - name: Set Release Asset Name
         run: echo "APK_NAME=${{ env.apk_name }}.apk" >> $GITHUB_ENV
 
-      - name: Rename and Upload APK to CarTemplate2Public Repo
+      - name: Rename and Upload APK
         run: |
-          APK_NAME="${{ env.apk_name }}.apk"
+          APK_NAME="${{ env.apk_name }}.apk" # Remove -debug from the APK name
           mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/$APK_NAME
           echo "Uploading APK: $APK_NAME"
         shell: bash
 
-      - name: Upload APK as Release Asset to CarTemplate2Public Repo
-        id: upload_apk_public
+      - name: Upload APK as Release Asset
+        id: upload_apk
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.create_release_public.outputs.upload_url }}
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: app/build/outputs/apk/debug/${{ env.APK_NAME }}
           asset_name: ${{ env.APK_NAME }}
           asset_content_type: application/vnd.android.package-archive
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_FOR_TEST_REPO }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Debug create_release outputs
-        run: |
-          echo "Create Release Outputs: ${{ toJson(steps.create_release.outputs) }}"
-      
       - name: Save Cache
         uses: actions/cache@v2
         with:
