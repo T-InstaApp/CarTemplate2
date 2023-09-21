@@ -57,7 +57,7 @@ jobs:
           git config --local user.name "T-InstaApp"
           git add app/build.gradle
           git commit -m "Update versionName to ${{ steps.determine_version.outputs.CURRENT_VERSION }}"
-          git push
+          git push --force
 
       - name: Build APK
         run: ./gradlew assembleDebug
@@ -71,8 +71,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.1.1 # Replace with your desired tag name
-          release_name: Release v1.1.1 # Replace with your desired release name
+          tag_name: v1.1.2 # Replace with your desired tag name
+          release_name: Release v1.1.2 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
