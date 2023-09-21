@@ -11,7 +11,7 @@ jobs:
 
     env:
       apk_name: Niraj
-      APK_VERSION: 1.1.1
+      APK_VERSION: 1.1.3
 
     steps:
       - name: Restore Cache
