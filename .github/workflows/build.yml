@@ -37,6 +37,28 @@ jobs:
         run: |
           sed -i "s/android:label=\"[^\"]*\"/android:label=\"${{ env.apk_name }}\"/" app/src/main/AndroidManifest.xml
 
+      - name: Determine current version
+        id: determine_version
+        run: |
+          # Set a new version value here
+          NEW_VERSION="${{ env.APK_VERSION }}"  # Change this to your desired version
+          echo "New Version: $NEW_VERSION"
+          echo "CURRENT_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Update versionName in build.gradle
+        run: |
+          NEW_VERSION="${{ env.APK_VERSION }}"
+          sed -i "s/versionName \".*\"/versionName \"$NEW_VERSION\"/" app/build.gradle
+        working-directory: ${{ github.workspace }}
+
+      - name: Commit changes and push
+        run: |
+          git config --local user.email "hello@instaapp.online"
+          git config --local user.name "T-InstaApp"
+          git add app/build.gradle
+          git commit -m "Update versionName to ${{ steps.determine_version.outputs.CURRENT_VERSION }}"
+          git push
+
       - name: Build APK
         run: ./gradlew assembleDebug
 
