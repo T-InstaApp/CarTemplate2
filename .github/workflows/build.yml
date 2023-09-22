@@ -11,7 +11,9 @@ jobs:
 
     env:
       apk_name: CarApp
-      APK_VERSION: 1.1.6
+      APK_VERSION: 1.1.7
+      Company_Name: Carvana
+      email : niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com
 
     steps:
       - name: Restore Cache
@@ -71,8 +73,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.1.6 # Replace with your desired tag name
-          release_name: Release v1.1.6 # Replace with your desired release name
+          tag_name: v1.1.7 # Replace with your desired tag name
+          release_name: Release v1.1.7 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -118,15 +120,18 @@ jobs:
           body: |
             Here is the link to download the APK:
             ${{ steps.upload_apk.outputs.browser_download_url }}
-          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,roshan.shendre@tissatech.com
+          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com
 
       - name: Call API
         run: |
           export BASE_URL="https://restaurant60-be-dev-xtpocjmkpa-uw.a.run.app/app-url-update"
           export type="Android"
           export restaurant_id="239"
+          export apk_name2="${{ env.apk_name }}"
+          export company_name="${{env.Company_Name}}"
+          export email=""${{ env.email }}
           export url="${{ steps.upload_apk.outputs.browser_download_url }}"
-          export API_URL="$BASE_URL/?url=$url&type=$type&restaurant_id=$restaurant_id"
+          export API_URL="$BASE_URL/?url=$url&type=$type&restaurant_id=$restaurant_id&app_name=$apk_name2&emails=$email&compony_name=$company_name"
           echo "Uploading APK: $API_URL"
           response=$(curl -X GET $API_URL)
           echo "API Response: $response"
