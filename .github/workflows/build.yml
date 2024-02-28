@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      apk_name: 1709121570
-      APK_VERSION: 1.1.30
+      apk_name: 1709121756
+      APK_VERSION: 1.1.31
       Company_Name: Carvana
       email : niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com
 
@@ -73,8 +73,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.1.30 # Replace with your desired tag name
-          release_name: Release v1.1.30 # Replace with your desired release name
+          tag_name: v1.1.31 # Replace with your desired tag name
+          release_name: Release v1.1.31 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -120,7 +120,7 @@ jobs:
           body: |
             Here is the link to download the APK:
             ${{ steps.upload_apk.outputs.browser_download_url }}
-          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,tt@g.com
+          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,vaishnavi.charde@tissatech.com
 
       - name: Call API
         run: |
