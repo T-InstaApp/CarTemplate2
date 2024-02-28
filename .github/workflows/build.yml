@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      apk_name: wwww1709122622
-      APK_VERSION: 1.1.40
+      apk_name: ee1709122716
+      APK_VERSION: 1.1.41
       Company_Name: Carvana
       email : niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com
 
@@ -73,8 +73,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.1.40 # Replace with your desired tag name
-          release_name: Release v1.1.40 # Replace with your desired release name
+          tag_name: v1.1.41 # Replace with your desired tag name
+          release_name: Release v1.1.41 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
