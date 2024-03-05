@@ -108,19 +108,19 @@ jobs:
             ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
-      - name: Send Email Notification
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: instaapp.online@gmail.com
-          password: ${{ secrets.GMAIL_TOKEN }}
-          from: instaapp.online@gmail.com
-          subject: APK Build Notification
-          body: |
-            Here is the link to download the APK:
-            ${{ steps.upload_apk.outputs.browser_download_url }}
-          to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,niraj.kumar@tissatech.com
+      # - name: Send Email Notification
+      #   uses: dawidd6/action-send-mail@v3
+      #   with:
+      #     server_address: smtp.gmail.com
+      #     server_port: 465
+      #     username: instaapp.online@gmail.com
+      #     password: ${{ secrets.GMAIL_TOKEN }}
+      #     from: instaapp.online@gmail.com
+      #     subject: APK Build Notification
+      #     body: |
+      #       Here is the link to download the APK:
+      #       ${{ steps.upload_apk.outputs.browser_download_url }}
+      #     to: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com,niraj.kumar@tissatech.com
 
       - name: Call API
         run: |
