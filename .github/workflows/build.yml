@@ -10,10 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      apk_name: SKAPP
-      APK_VERSION: 1.1.50
+      apk_name: SKAPP2
+      APK_VERSION: 1.1.51
       Company_Name: Carvana
       email : niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com
+      logo_url: https://images.vexels.com/media/users/3/142789/isolated/preview/2bfb04ad814c4995f0c537c68db5cd0b-multicolor-swirls-circle-logo.png
 
     steps:
       - name: Restore Cache
@@ -34,10 +35,19 @@ jobs:
 
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
+        
+      - name: Download new logo
+        run: curl -o new_logo.png ${{ env.logo_url }}
+      
+      - name: Replace logo in app
+        run: |
+          # Assuming your app's logo is stored at app/src/main/res/drawable/logo.png
+          cp new_logo.png app/src/main/res/drawable/logo.png
 
       - name: Update AndroidManifest.xml
         run: |
           sed -i "s/android:label=\"[^\"]*\"/android:label=\"${{ env.apk_name }}\"/" app/src/main/AndroidManifest.xml
+          sed -i "s/android:icon=\"[^\"]*\"/android:icon=\"@drawable/logo\"/" app/src/main/AndroidManifest.xml
 
       - name: Determine current version
         id: determine_version
