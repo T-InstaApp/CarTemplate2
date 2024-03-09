@@ -11,7 +11,7 @@ jobs:
 
     env:
       apk_name: NirajCar
-      APK_VERSION: 1.1.74
+      APK_VERSION: 1.1.75
       Company_Name: Carvana
       email: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com
 
@@ -73,8 +73,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.1.74 # Replace with your desired tag name
-          release_name: Release v1.1.74 # Replace with your desired release name
+          tag_name: v1.1.75 # Replace with your desired tag name
+          release_name: Release v1.1.75 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
