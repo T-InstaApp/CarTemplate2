@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      apk_name: Niraj12
-      APK_VERSION: 1.1.85
+      apk_name: Niraj123
+      APK_VERSION: 1.1.86
       Company_Name: Carvana
       email: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com
 
@@ -73,8 +73,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.1.85 # Replace with your desired tag name
-          release_name: Release v1.1.85 # Replace with your desired release name
+          tag_name: v1.1.86 # Replace with your desired tag name
+          release_name: Release v1.1.86 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
