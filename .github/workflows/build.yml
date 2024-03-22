@@ -11,7 +11,7 @@ jobs:
 
     env:
       apk_name: Niraj12345
-      APK_VERSION: 1.1.92
+      APK_VERSION: 1.1.93
       Company_Name: Carvana
       email: niraj.kumar@tissatech.com,vishal.upadhyay@tissatech.com
 
@@ -73,8 +73,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: v1.1.92 # Replace with your desired tag name
-          release_name: Release v1.1.92 # Replace with your desired release name
+          tag_name: v1.1.93 # Replace with your desired tag name
+          release_name: Release v1.1.93 # Replace with your desired release name
           draft: false
           prerelease: false
         env:
@@ -127,7 +127,7 @@ jobs:
         run: |
           export BASE_URL="https://restaurant60-be-dev-xtpocjmkpa-uw.a.run.app/app-url-update"
           export type="Android"
-          export restaurant_id="648"
+          export restaurant_id="645"
           export apk_name2="${{ env.apk_name }}"
           export company_name="${{ env.Company_Name }}"
           export email="${{ env.email }}"
